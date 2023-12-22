@@ -1,26 +1,26 @@
 import fs from "fs";
+import { yarg } from "./config/plugins/args.plugin";
 
-const number = 5;
-
+const { b: base, l: limit, s: showTable } = yarg;
 let text = `
 ================================
-            Table ${5}
+            Table ${base}
 ================================\n
 `;
+for (let index = 1; index <= limit; index++) {
+   const value = index * base;
 
-console.log('<--------------- JK App --------------->');
-console.log(text);
-for (let index = 1; index <= 10; index++) {
-   const value = index * number;
-
-   const total = `${number} x ${index} = ${value}`;
-   console.log( total );
+   const total = `${base} x ${index} = ${value}`;
    text += `${total} \n`
+}
+
+if ( showTable ) {
+   console.log(text);
 }
 
 const outputPath = 'outputs';
 
 fs.mkdirSync( outputPath, { recursive: true } );
 
-fs.writeFileSync(`${outputPath}/table-${number}.txt`,  text, 'utf8');
+fs.writeFileSync(`${outputPath}/table-${base}.txt`,  text, 'utf8');
 

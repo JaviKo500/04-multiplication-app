@@ -1,26 +1,11 @@
-import fs from "fs";
+import { yarg } from './config/plugins/args.plugin';
 
-const number = 5;
+( async () => {
+   await main();
+})();
 
-let text = `
-================================
-            Table ${5}
-================================\n
-`;
 
-console.log('<--------------- JK App --------------->');
-console.log(text);
-for (let index = 1; index <= 10; index++) {
-   const value = index * number;
-
-   const total = `${number} x ${index} = ${value}`;
-   console.log( total );
-   text += `${total} \n`
+async function main () {
+   console.log('<--------------- JK App --------------->');
+   console.log(yarg);
 }
-
-const outputPath = 'outputs';
-
-fs.mkdirSync( outputPath, { recursive: true } );
-
-fs.writeFileSync(`${outputPath}/table-${number}.txt`,  text, 'utf8');
-
