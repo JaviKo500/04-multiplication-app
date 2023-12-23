@@ -5,16 +5,19 @@ interface RunOptions {
    base: number;
    limit: number;
    showTable: boolean;
+   fileName: string,
+   fileDestination: string,
 }
 
 export class ServerApp {
    static  run( options: RunOptions ) {
-      const { base, limit, showTable } = options;
+      const { base, limit, showTable, fileName, fileDestination } = options;
       const table = new CreateTable().execute({ base, limit });
       const wasCreated = new SaveFile()
          .execute( { 
             fileContent: table, 
-            fileDestination: `outputs/table-${base}` 
+            fileDestination,
+            fileName
          });
       console.log('<--------------- JK Server-app --------------->');
       if ( showTable ) console.log(table);
