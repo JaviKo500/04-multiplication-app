@@ -17,7 +17,8 @@ export class CreateTable implements CreateTableUseCase {
       let outputMessage = ``;
       for (let index = 1; index <= limit; index++) {
          const value = index * base;
-         outputMessage += `${base} x ${index} = ${value} \n`
+         outputMessage += `${base} x ${index} = ${value}`;
+         if ( index < limit ) outputMessage += '\n';
       }
       return outputMessage;
    }
