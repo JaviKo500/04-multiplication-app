@@ -17,15 +17,13 @@ export class SaveFile implements SaveFileUseCase {
    }
 
    execute = (options: Options): boolean => {
-
+      console.table({'test': true})
       try {
          const { fileContent, fileDestination = 'outputs', fileName = 'table' } = options;
          fs.mkdirSync( fileDestination, { recursive: true } );
          fs.writeFileSync(`${fileDestination}/${fileName}.txt`,  fileContent);
          return true;
       } catch (error) {
-         // console.log('<--------------- JK Save-file.use-case --------------->');
-         // console.log(error);
          return false;
       }
       

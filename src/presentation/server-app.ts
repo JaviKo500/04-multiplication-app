@@ -10,7 +10,8 @@ interface RunOptions {
 }
 
 export class ServerApp {
-   static  run( options: RunOptions ) {
+   static run( options: RunOptions ) {
+      console.log('Server running...');
       const { base, limit, showTable, fileName, fileDestination } = options;
       const table = new CreateTable().execute({ base, limit });
       const wasCreated = new SaveFile()
@@ -19,7 +20,6 @@ export class ServerApp {
             fileDestination,
             fileName
          });
-      console.log('<--------------- JK Server-app --------------->');
       if ( showTable ) console.log(table);
 
       ( wasCreated )
